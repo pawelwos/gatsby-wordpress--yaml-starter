@@ -1,0 +1,41 @@
+
+{% for page in pages %}
+{% set looper = 0 %}
+{% for section in fn('get_field', 'sections', page.id) %}
+{% set looper = looper + 1 %}
+-
+  sectionId: '{{page.ID}}-{{looper}}-{{section.acf_fc_layout}}'
+  pageId: {{page.ID}}
+  type: '{{section.acf_fc_layout}}'
+  title: '{{section.title}}'
+  intro: {{fn('format_for_yaml', section.intro|raw)}}
+  content: {{ fn('format_for_yaml', section.content|raw) }}
+{% set images = fn('get_inline_images', section.content|raw) %}
+{% if images[1]|length > 0 %}
+  inlineImages:
+{% for image in images[1] %}
+    -
+      image: '{{image}}'
+{% endfor %}
+{% endif %}
+  bgcolor: '{{section.bgcolor}}'
+  bgimg: '{{section.bgimg.url}}'
+  bgimgAlt: '{{section.bgimg.alt}}'
+  image: '{{section.image.url}}'
+  imageAlt: '{{section.image.alt}}'
+  imagePosition: '{{section.image_position}}'
+
+  textColor: '{{section.text_color}}'
+
+  features: 
+{% for feat in section.items %}
+    -
+      title: '{{feat.title}}'
+      intro: '{{feat.intro}}'
+      image: '{{feat.image.url}}'
+      link: '{{feat.link}}'
+{% endfor %}
+{# end sections #}
+{% endfor %}
+{# end pages #}
+{% endfor %}

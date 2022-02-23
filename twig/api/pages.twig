@@ -1,0 +1,16 @@
+{% set looper = 0 %}
+{% for page in pages %}
+-
+  slug: '{{page.post_name}}'
+  type: '{{page.post_type}}'
+  databaseId: {{page.ID}}
+  title: '{{page.title}}'
+{% if page.id == 2 %}
+  url: '/'
+{% else %}
+  url: '{{page.link|replace({(site.link): ''})}}'
+{% endif %}
+  excerpt: '{{ page.preview.length(50).read_more('')  }}'
+  date: '{{page.date}}'
+  thumbnail: '{{page.thumbnail.src}}'
+{% endfor %}
