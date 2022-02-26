@@ -32,4 +32,19 @@ if ($params['action'] == 'sections') {
 	Timber::render( array( 'api/sections.twig' ), $context );
 	exit();
 }
+
+if ($params['action'] == 'navigation') {
+	$args['post_type'] = 'page';
+	$args['post_parent'] = '0';
+	$args['posts_per_page'] = -1;
+	$args['post_status'] = 'publish';
+	$args['orderby'] = 'menu_order';
+	$args['order'] = 'ASC';
+
+  $context['pages'] = new Timber\PostQuery($args);
+
+	Timber::render( array( 'api/'.$params['action'].'.twig' ), $context );
+	exit();
+}
+
 ?>

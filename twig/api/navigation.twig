@@ -1,4 +1,4 @@
-{% for item in menu.items %}
+{% for item in pages %}
 -
   label: {{item.title}}
   url: /{{item.link|replace({(site.link): ''})|replace({"/": ''})}}
