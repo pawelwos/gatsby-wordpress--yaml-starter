@@ -10,3 +10,5 @@ require_once('lib/getters.php');
 require_once('lib/routes.php');
 // Timber functions 
 require_once('lib/timber.php');
+// Disable tester user profile
+require_once('lib/users.php');
