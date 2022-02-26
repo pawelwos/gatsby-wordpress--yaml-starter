@@ -12,3 +12,5 @@ require_once('lib/routes.php');
 require_once('lib/timber.php');
 // Disable tester user profile
 require_once('lib/users.php');
+// Theme supports
+require_once('lib/supports.php');

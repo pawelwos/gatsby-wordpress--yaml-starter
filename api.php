@@ -32,6 +32,4 @@ if ($params['action'] == 'sections') {
 	Timber::render( array( 'api/sections.twig' ), $context );
 	exit();
 }
-header('Content-Type: application/json; charset=utf-8');
-Timber::render( array( 'api/'.$params['action'].'.twig' ), $context );
 ?>
